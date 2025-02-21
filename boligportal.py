@@ -157,7 +157,7 @@ async def scrape_boligportal(page):
 
                 if price_element:  # Ensure element exists
                     price_text = await price_element.inner_text()  # Get price as text
-                    price = int(price_text.replace("kr.", "").replace(".", "").strip())  # Convert to number
+                    price = int(price_text.replace("kr.", "").replace(",", "").replace(".", "").strip())
                     if price < MAX_PRICE:
                         href = await element.get_attribute("href")
                         if href:
